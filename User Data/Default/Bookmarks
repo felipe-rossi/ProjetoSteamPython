@@ -1,0 +1,47 @@
+{
+   "checksum": "fa500abb035cefb5679081898b8e3aac",
+   "roots": {
+      "bookmark_bar": {
+         "children": [  ],
+         "date_added": "13372727727805561",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Barra de favoritos",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13372727780035974",
+            "date_last_used": "0",
+            "guid": "3ffd63c1-3900-499d-aced-da2056fd1740",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Document",
+            "type": "url",
+            "url": "http://127.0.0.1:5500/aula13/exe013.html"
+         } ],
+         "date_added": "13372727727805564",
+         "date_last_used": "0",
+         "date_modified": "13372727780035974",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Outros favoritos",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13372727727805568",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Favoritos nos dispositivos móveis",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
