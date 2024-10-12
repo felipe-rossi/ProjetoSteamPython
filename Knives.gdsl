@@ -3,14 +3,14 @@ pipeline {
     stages {
         stage('Install Dependencies') {
             steps {
-                // Comando para instalar as dependências do Python
-                bat 'pip install -r requirements.txt'
+                // Use o caminho completo para o pip
+                bat 'C:\\Users\\felip\\AppData\\Local\\Programs\\Python\\Python39\\Scripts\\pip.exe install -r requirements.txt'
             }
         }
         stage('Run Python Script') {
             steps {
-                // Comando para rodar o script Python
-                bat 'python Steam.py'
+                // Use o caminho completo para o python
+                bat 'C:\\Users\\felip\\AppData\\Local\\Programs\\Python\\Python39\\python.exe Steam.py'
             }
         }
     }
