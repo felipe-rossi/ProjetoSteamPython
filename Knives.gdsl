@@ -1,6 +1,21 @@
+
+
+
 pipeline {
     agent any
     stages {
+
+        stage('Check Python') {
+            steps {
+                bat 'python --version'
+            }
+        }
+        stage('Check Pip') {
+            steps {
+                bat 'pip --version'
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 // Comando para instalar as dependências do Python
