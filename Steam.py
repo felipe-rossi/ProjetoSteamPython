@@ -16,7 +16,7 @@ class Steam(unittest.TestCase):
 
     def setUp(self):
         options = webdriver.ChromeOptions()
-        options.add_argument("user-data-dir=C:/Users/felip/Documents/ProjetoSteamPython/User Data") # C:/Users/felip/AppData/Local/Google/Chrome/User Data
+        options.add_argument("user-data-dir=C:\ProgramData\Jenkins\.jenkins\workspace\SteamProjectKnives") # C:/Users/felip/AppData/Local/Google/Chrome/User Data / C:/Users/felip/Documents/ProjetoSteamPython/User Data
         options.add_argument('--disable-gpu')
         options.add_argument('--disable-dev-shm-usage')  # Reduz o uso de memória compartilhada
         options.add_argument('--no-sandbox')  # Usado em alguns ambientes para evitar o sandbox
