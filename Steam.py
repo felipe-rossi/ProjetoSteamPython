@@ -37,6 +37,7 @@ class Steam(unittest.TestCase):
 
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.LINK_TEXT, "COMUNIDADE")))
         txtComunidade = driver.find_element(By.LINK_TEXT, "COMUNIDADE")
+        driver.save_screenshot('screenshot.png')
         ActionChains(driver).move_to_element(txtComunidade).perform()
 
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//div[@id='global_header']//following::a[contains(text(),'Mercado')]")))
