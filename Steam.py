@@ -8,14 +8,15 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 from TratamentoPreco import tratarPrecoSkin
-import smtplib
+from enviarEmailCompraSucesso import enviarEmailCompra
+
 
 
 class Steam(unittest.TestCase):
 
     def setUp(self):
         options = webdriver.ChromeOptions()
-        options.add_argument("user-data-dir=C:/Users/felip/AppData/Local/Google/Chrome/User Data") # C:/Users/felip/AppData/Local/Google/Chrome/User Data
+        options.add_argument("user-data-dir=C:/Users/felip/Documents/ProjetoSteamPython/User Data") # C:/Users/felip/AppData/Local/Google/Chrome/User Data
         options.add_argument('--disable-gpu')
         options.add_argument('--disable-dev-shm-usage')  # Reduz o uso de memória compartilhada
         options.add_argument('--no-sandbox')  # Usado em alguns ambientes para evitar o sandbox
@@ -56,7 +57,7 @@ class Steam(unittest.TestCase):
 
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.NAME, "category_730_Type[]")))
         selectFaca = Select(driver.find_element(By.NAME, "category_730_Type[]"))
-        selectFaca.select_by_value("tag_CSGO_Tool_WeaponCase_KeyTag") # tag_CSGO_Type_Knife
+        selectFaca.select_by_value("tag_CSGO_Type_Knife") # tag_CSGO_Type_Knife
 
         
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='market_advancedsearch_bottombuttons']//following-sibling::span[contains(text(),'Buscar')]")))
@@ -69,8 +70,8 @@ class Steam(unittest.TestCase):
         
 
         WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "resultlink_0")))
-        listaNomeSkinsSemFiltro = driver.find_elements(By.ID, "result_0_name")
-        nome_primeira_skin = listaNomeSkinsSemFiltro[0]
+        nome_primeira_skin = driver.find_element(By.ID, "result_0_name")
+
         WebDriverWait(driver, 30).until(EC.invisibility_of_element_located(nome_primeira_skin))
        
         primeiroResultado = driver.find_elements(By.XPATH, "//span[@class='normal_price']")
@@ -79,29 +80,35 @@ class Steam(unittest.TestCase):
 
         precoSkinTratada = tratarPrecoSkin(precoSkin)
 
-        print("Preço da Skin mais barata é de:" + precoSkin)
-        print("Preço da Skin mais barata é de tratada:", precoSkinTratada)
-
-        print(type(precoSkinTratada))
-
         if(precoSkinTratada <=  10000):
-            print("Skin com valor menor que 100 reais")
-            servidor_email = smtplib.SMTP("smtp.gmail.com", 587)
-            servidor_email.starttls()
-            servidor_email.login('felipaovs12@gmail.com','dgmj hyot mhbf ybzj')
+            print("Faca com valor menor que 100 reais")
+            WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "result_0_name")))
+            nome_primeira_skin = driver.find_element(By.ID, "result_0_name")
+            nome_primeira_skin.click()
 
-            remetente = 'felipaovs12@gmail.com'
-            destinatarios = ['caioansanelli1@gmail.com','rfgdfghgf@gmail.com']
-            conteudo = "Email teste para compra de skins cs2"
+            WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "largeiteminfo_item_actions")))
 
-            servidor_email.sendmail(remetente, destinatarios, conteudo)
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//span[contains(text(),'Comprar agora')]")))
+            btnComprarAgora = driver.find_element(By.XPATH, "//span[contains(text(),'Comprar agora')]")
+            driver.execute_script("arguments[0].scrollIntoView();", btnComprarAgora)
+            btnComprarAgora.click()
 
-            servidor_email.quit()
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, "market_buynow_dialog_accept_ssa")))
+            checkboxAceitoTermos = driver.find_element(By.ID, "market_buynow_dialog_accept_ssa")
+            checkboxAceitoTermos.click()
 
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//a[@id='market_buynow_dialog_purchase']")))
+            btnComprar = driver.find_element(By.XPATH, "//a[@id='market_buynow_dialog_purchase']")
+            btnComprar.click()
+            
+            WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, "//div[contains(text(),'Parabéns pela compra!')]")))
+            txtPrabensPelaSuaCompra = driver.find_element(By.XPATH, "//div[contains(text(),'Parabéns pela compra!')]")
+
+            self.assertEqual(txtPrabensPelaSuaCompra.text, "Parabéns pela compra! Você pode ver o novo item no seu inventário.")            
+            enviarEmailCompra()
 
     def tearDown(self):
-        #self.driver.close()
-        print("Terminou")
+        self.driver.close()
 
 if __name__ == "__main__":
     unittest.main()
