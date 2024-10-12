@@ -80,7 +80,9 @@ class Steam(unittest.TestCase):
 
         precoSkinTratada = tratarPrecoSkin(precoSkin)
 
-        if(precoSkinTratada <=  10000):
+        print("Preço mais barato da faca: ", precoSkin)
+
+        if(precoSkinTratada <=  1782):
             print("Faca com valor menor que 100 reais")
             WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "result_0_name")))
             nome_primeira_skin = driver.find_element(By.ID, "result_0_name")
