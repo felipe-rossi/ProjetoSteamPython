@@ -1,33 +1,17 @@
 pipeline {
     agent any
-
     stages {
-        stage('Install Python and Dependencies') {
+        stage('Install Dependencies') {
             steps {
-                // Ativa o ambiente virtual e instala as dependências
-                bat '''
-                python -m venv venv
-                venv\\Scripts\\activate
-                pip install -r requirements.txt
-                '''
+                // Comando para instalar as dependências do Python
+                bat 'pip install -r requirements.txt'
             }
         }
-        
-        stage('Run Unit Tests') {
+        stage('Run Python Script') {
             steps {
-            
-                bat '''
-                venv\\Scripts\\activate
-                python -m unittest discover -s tests -p "*.py" -v > results.xml
-                '''
+                // Comando para rodar o script Python
+                bat 'python Steam.py'
             }
-        }
-    }
-
-    post {
-        always {
-            
-            junit 'results.xml'
         }
     }
 }
