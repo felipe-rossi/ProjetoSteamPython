@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Install Python and Dependencies') {
+            steps {
+                // Ativa o ambiente virtual e instala as dependências
+                bat '''
+                python -m venv venv
+                venv\\Scripts\\activate
+                pip install -r requirements.txt
+                '''
+            }
+        }
+        
+        stage('Run Unit Tests') {
+            steps {
+            
+                bat '''
+                venv\\Scripts\\activate
+                python -m unittest discover -s tests -p "*.py" -v > results.xml
+                '''
+            }
+        }
+    }
+
+    post {
+        always {
+            
+            junit 'results.xml'
+        }
+    }
+}
