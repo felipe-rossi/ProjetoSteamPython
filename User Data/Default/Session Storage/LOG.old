@@ -1,3 +1,8 @@
-2024/10/12-01:18:07.011 1130 Reusing MANIFEST C:\Users\felip\AppData\Local\Google\Chrome\User Data\Default\Session Storage/MANIFEST-000001
-2024/10/12-01:18:07.012 1130 Recovering log #4
-2024/10/12-01:18:07.015 1130 Reusing old log C:\Users\felip\AppData\Local\Google\Chrome\User Data\Default\Session Storage/000004.log 
+2024/10/12-03:05:22.020 52a8 Reusing MANIFEST C:\Users\felip\Documents\ProjetoSteamPython\User Data\Default\Session Storage/MANIFEST-000001
+2024/10/12-03:05:22.021 52a8 Recovering log #4
+2024/10/12-03:05:22.021 52a8 Level-0 table #7: started
+2024/10/12-03:05:22.026 52a8 Level-0 table #7: 23858 bytes OK
+2024/10/12-03:05:22.026 52a8 Recovering log #7
+2024/10/12-03:05:22.028 52a8 Reusing old log C:\Users\felip\Documents\ProjetoSteamPython\User Data\Default\Session Storage/000007.log 
+2024/10/12-03:05:22.035 52a8 Delete type=0 #4
+2024/10/12-03:05:22.035 52a8 Delete type=2 #8

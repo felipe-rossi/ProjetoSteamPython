@@ -1,12 +1,3 @@
-[17292:29520:1012/012308.549:WARNING:chrome_main_delegate.cc(747)] This is Chrome version 129.0.6668.101 (not a warning)
-[17292:29520:1012/012308.599:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
-[21412:23892:1012/012308.719:WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)
-[17292:29520:1012/012312.163:INFO:CONSOLE(1900)] "WebSocket error. Retry in 131015ms.", source: https://community.akamai.steamstatic.com/public/javascript/market.js?v=3k92woDjyWUF&l=brazilian (1900)
-[17292:8924:1012/012312.299:ERROR:cert_verify_proc_builtin.cc(1063)] CertVerifyProcBuiltin for cdn.origin.steamstatic.com failed:
------ Certificate i=0 (CN=cdnlb.steamserver.net,O=Valve Corp,L=Bellevue,ST=Washington,C=US) -----
-ERROR: No matching issuer found
-
-
-[23784:22340:1012/012314.465:WARNING:sqlite_persistent_store_backend_base.cc(198)] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:248 to client_task_runner_.
-[23784:2756:1012/012314.473:WARNING:sqlite_persistent_store_backend_base.cc(198)] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:248 to client_task_runner_.
-[23784:2756:1012/012314.473:WARNING:sqlite_persistent_store_backend_base.cc(198)] Failed to post task from FlushAndNotifyInBackground@net\extras\sqlite\sqlite_persistent_store_backend_base.cc:248 to client_task_runner_.
+[7624:31416:1012/030532.684:WARNING:chrome_main_delegate.cc(747)] This is Chrome version 129.0.6668.101 (not a warning)
+[7624:31416:1012/030532.733:INFO:chrome_browser_cloud_management_controller.cc(196)] No machine level policy manager exists.
+[8008:29292:1012/030532.842:WARNING:viz_main_impl.cc(85)] VizNullHypothesis is disabled (not a warning)
