@@ -9,7 +9,7 @@ import time, unittest
 from datetime import datetime
 
 
-class MercadoDaComunidadePage(unittest.TestCase):
+class MercadoDaComunidadePage:
     
     def __init__(self, driver):
         self.driver = driver
@@ -32,7 +32,7 @@ class MercadoDaComunidadePage(unittest.TestCase):
         quantidade_texto = len(txtVoceRealizou)
 
         if(quantidade_texto > 0):
-            self.driver.save_screenshot("Realizou_Solicitacoes_demais.png")
+            self.driver.save_screenshot("screenshots/realizou_Solicitacoes_demais.png")
             time.sleep(1800)     
     
     
@@ -68,18 +68,17 @@ class MercadoDaComunidadePage(unittest.TestCase):
     
         precoSkin = primeiroResultado[0].text
 
-        if("R$" in precoSkin):
-            precoSkinTratada = tratarPrecoSkinReal(precoSkin)
-        else:
-            precoSkinTratada = tratarPrecoSkinDollar(precoSkin)
-
+        precoSkinTratada = tratarPrecoSkinReal(precoSkin)
+       
         agora = datetime.now()
         self.driver.save_screenshot('screenshots/ultima_validacao_skin.png')
         print("Screenshot foi capturada na data e hora:", agora)
         print("Preço mais barato da faca: ", precoSkin)
 
-        if(precoSkinTratada <=  10000 or precoSkinTratada <= 1782):
+        if(precoSkinTratada <=  10000):
             self.realizarCompra()
+        else:
+            return True
     
     def realizarCompra(self):
         print("Skin com valor menor que 100 reais")
@@ -109,3 +108,5 @@ class MercadoDaComunidadePage(unittest.TestCase):
         self.driver.find_element(*self.btnFechar).click()
         
         enviarEmailCompra()
+        
+        return False

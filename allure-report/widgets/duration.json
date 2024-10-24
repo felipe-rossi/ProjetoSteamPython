@@ -1,0 +1,1 @@
+[{"uid":"10c5e315ce8f183c","name":"test_validarPrecosFacas","time":{"start":1729777753819,"stop":1729777758535,"duration":4716},"status":"passed","severity":"normal"},{"uid":"a9987408a20afecc","name":"test_validarPrecosLuvas","time":{"start":1729777766842,"stop":1729777771113,"duration":4271},"status":"passed","severity":"normal"}]

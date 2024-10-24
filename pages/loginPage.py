@@ -33,8 +33,8 @@ class LoginPage:
         
         if(codigo):
                 
-            WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//input[@tabindex='0']")))
-            self.inputPreencherCodigo = self.driver.find_elements(By.XPATH, "//input[@tabindex='0']")
+            WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//input[@type='text']")))
+            self.inputPreencherCodigo = self.driver.find_elements(By.XPATH, "//input[@type='text']")
             print("Tamanho da lista: ", len(self.inputPreencherCodigo))
 
             self.inputPreencherCodigo[0].send_keys(codigo[0])

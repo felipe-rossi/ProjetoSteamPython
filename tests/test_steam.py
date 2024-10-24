@@ -1,16 +1,15 @@
 from selenium import webdriver
-import unittest, time
+import pytest, time
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
 from pages.lojaPage import LojaPage
 from pages.mercadoComunidadePage import MercadoDaComunidadePage
+import allure, os
 
-
-class SteamTest(unittest.TestCase):
+class TestSteam:
     
-    
-    def setUp(self):
+    def setup_method(self):
         options = webdriver.ChromeOptions()
         options.add_argument("user-data-dir=C:/Users/felip/AppData/Local/Google/Chrome/User Data") # C:/Users/felip/AppData/Local/Google/Chrome/User Data -  C:/ProgramData/Jenkins/.jenkins/workspace/SteamProjectKnives/User Data
         options.add_argument('--disable-gpu')
@@ -24,7 +23,8 @@ class SteamTest(unittest.TestCase):
         self.driver.maximize_window()
         self.driver.get("https://store.steampowered.com/?l=portuguese")
         
-
+    @allure.feature("Teste Valor da faca")
+    @allure.story("Testar se o preço da faca é abaixo de 100 reais")
     def test_validarPrecosFacas(self):
         loja_page = LojaPage(self.driver)
         loja_page.VerificarLogin()
@@ -34,8 +34,13 @@ class SteamTest(unittest.TestCase):
         mercado_page.verificarAvisoSolicitaoesDemais()
         mercado_page.filtrarPesquisaPorfacas("tag_CSGO_Type_Knife")
         mercado_page.filtarPeloMenorPreco()
-        mercado_page.validarPrecoDaSkin()
+        verdade = mercado_page.validarPrecoDaSkin()
+        
+        assert(verdade)
+
     
+    @allure.feature("Teste Valor da Luva")
+    @allure.story("Testar se o preço da luva é abaixo de 100 reais")
     def test_validarPrecosLuvas(self):
         loja_page = LojaPage(self.driver)
         loja_page.VerificarLogin()
@@ -45,11 +50,13 @@ class SteamTest(unittest.TestCase):
         mercado_page.verificarAvisoSolicitaoesDemais()
         mercado_page.filtrarPesquisaPorfacas("tag_Type_Hands")
         mercado_page.filtarPeloMenorPreco()
-        mercado_page.validarPrecoDaSkin()
+        verdade = mercado_page.validarPrecoDaSkin()
+        
+        assert(verdade)
 
-    def tearDown(self):
-        time.sleep(3)
+    def teardown_method(self):
+        time.sleep(5)
         self.driver.close()
 
 if __name__ == "__main__":
-    unittest.main()
+    os.makedirs('./allure-results', exist_ok=True)
