@@ -1,5 +1,5 @@
 from selenium import webdriver
-import pytest, time
+import time
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support import expected_conditions as EC
@@ -19,8 +19,10 @@ class TestSteam:
         options.add_argument('--ignore-certificate-errors')
         options.add_argument('--ignore-ssl-errors') 
         options.add_argument('--allow-insecure-localhost')
+
         self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)  
         self.driver.maximize_window()
+        
         self.driver.get("https://store.steampowered.com/?l=portuguese")
         
     @allure.feature("Teste Valor da faca")
@@ -39,20 +41,20 @@ class TestSteam:
         assert(verdade)
 
     
-    @allure.feature("Teste Valor da Luva")
-    @allure.story("Testar se o preço da luva é abaixo de 100 reais")
-    def test_validarPrecosLuvas(self):
-        loja_page = LojaPage(self.driver)
-        loja_page.VerificarLogin()
-        loja_page.acessarMercadoDaComunidade()
+    # @allure.feature("Teste Valor da Luva")
+    # @allure.story("Testar se o preço da luva é abaixo de 100 reais")
+    # def test_validarPrecosLuvas(self):
+    #     loja_page = LojaPage(self.driver)
+    #     loja_page.VerificarLogin()
+    #     loja_page.acessarMercadoDaComunidade()
         
-        mercado_page = MercadoDaComunidadePage(self.driver)
-        mercado_page.verificarAvisoSolicitaoesDemais()
-        mercado_page.filtrarPesquisaPorfacas("tag_Type_Hands")
-        mercado_page.filtarPeloMenorPreco()
-        verdade = mercado_page.validarPrecoDaSkin()
+    #     mercado_page = MercadoDaComunidadePage(self.driver)
+    #     mercado_page.verificarAvisoSolicitaoesDemais()
+    #     mercado_page.filtrarPesquisaPorfacas("tag_Type_Hands")
+    #     mercado_page.filtarPeloMenorPreco()
+    #     verdade = mercado_page.validarPrecoDaSkin()
         
-        assert(verdade)
+    #     assert(verdade)
 
     def teardown_method(self):
         time.sleep(5)

@@ -26,6 +26,7 @@ class MercadoDaComunidadePage:
         self.checkboxAceitoTermos = (By.ID, "market_buynow_dialog_accept_ssa")
         self.btnComprar = (By.XPATH, "//a[@id='market_buynow_dialog_purchase']")
         self.btnFechar = (By.ID, "market_buynow_dialog_close")
+        self.listaSkins = (By.XPATH, "//span[@class='normal_price']")
     
     def verificarAvisoSolicitaoesDemais(self):
         txtVoceRealizou = self.driver.find_elements(*self.textVoceRealizouSolicitaos)
@@ -59,6 +60,26 @@ class MercadoDaComunidadePage:
         self.driver.find_element(*self.btnOrdenarProPreco).click()
     
     def validarPrecoDaSkin(self):
+        # WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.ID, "resultlink_0")))
+        # nome_primeira_skin = self.driver.find_element(*self.primeiraSkinNome)
+
+        # WebDriverWait(self.driver, 30).until(EC.invisibility_of_element_located(nome_primeira_skin))
+        
+        # WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.XPATH, "//span[@class='normal_price']")))
+        # lista_skins_elementos = []
+        # lista_skins_elementos = self.driver.find_elements(*self.listaSkins)
+        
+        # lista_precos_skins = []
+        
+        # for skin in lista_skins_elementos:
+        #     lista_precos_skins.append(skin.text)
+        
+        # lista_precos_skins.sort()
+        
+        # print("Lista Preço ordernada....")
+        # for preco in lista_precos_skins:
+        #     print(preco)
+        
         WebDriverWait(self.driver, 30).until(EC.visibility_of_element_located((By.ID, "resultlink_0")))
         nome_primeira_skin = self.driver.find_element(*self.primeiraSkinNome)
 

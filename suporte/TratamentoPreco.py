@@ -1,5 +1,3 @@
-import time
-
 
 def tratarPrecoSkinReal(precoString):
      

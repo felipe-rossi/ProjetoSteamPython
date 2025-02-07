@@ -54,7 +54,7 @@ class CodigoSteam:
             else:
                 print("Código não encontrado no corpo da mensagem.")
         else:
-            time.sleep(30) # 120
+            time.sleep(120) # 
             print("Nenhum email não lido encontrado.")
             return ""
 
